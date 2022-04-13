@@ -28,6 +28,7 @@ function Popular() {
 
   return (
     <Wrapper>
+      <h3>Popular Dishes</h3>
       <Splide
         options={{
           perPage: 4,
@@ -54,6 +55,9 @@ function Popular() {
 
 const Wrapper = styled.div`
   margin: 5rem 0rem;
+  h3 {
+    margin-bottom: 2rem;
+  }
 `;
 
 const Card = styled.div`
