@@ -54,7 +54,7 @@ function Popular() {
 }
 
 const Wrapper = styled.div`
-  margin: 5rem 0rem;
+  margin: 3rem 0rem;
   h3 {
     margin-bottom: 2rem;
   }
