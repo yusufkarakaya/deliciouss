@@ -2,25 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-function Cuisine() {
+function Searched() {
+  const [searched, setSearched] = useState([]);
   let params = useParams();
-  const [cuisine, setCuisine] = useState([]);
 
-  const getCuisine = async (type) => {
+  const getSearched = async (search) => {
     const api = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${type}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${search}`
     );
     const data = await api.json();
-    setCuisine(data.results);
+    setSearched(data.results);
+    console.log(data.results);
   };
 
   useEffect(() => {
-    getCuisine(params.type);
-  }, [params.type]);
+    getSearched(params.search);
+  }, [params.search]);
 
   return (
     <Grid>
-      {cuisine.map((item) => {
+      {searched.map((item) => {
         return (
           <div>
             <img src={item.image} alt={item.title} />
@@ -46,4 +47,4 @@ const Grid = styled.div`
   }
 `;
 
-export default Cuisine;
+export default Searched;
