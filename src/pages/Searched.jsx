@@ -13,7 +13,6 @@ function Searched() {
     );
     const data = await api.json();
     setSearched(data.results);
-    console.log(data.results);
   };
 
   useEffect(() => {

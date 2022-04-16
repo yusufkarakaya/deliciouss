@@ -19,7 +19,6 @@ function Recipe() {
       const data = await api.json();
       setRecipe(data);
       localStorage.setItem('recipe', JSON.stringify(data));
-      console.log(data);
     }
   };
 
@@ -62,8 +61,10 @@ function Recipe() {
           )}
           {activeTab === 'Introduction' && (
             <ul>
-              <h3 key={recipe.id}>{recipe.summary} </h3>
-              <h3 key={recipe.id}> {recipe.instructions}</h3>
+              <h3 dangerouslySetInnerHTML={{ __html: recipe.summary }}></h3>
+              <h3
+                dangerouslySetInnerHTML={{ __html: recipe.instructions }}
+              ></h3>
             </ul>
           )}
         </div>
