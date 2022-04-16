@@ -8,18 +8,11 @@ function Recipe() {
   let params = useParams();
 
   const getRecipe = async (id) => {
-    const check = localStorage.getItem('recipe');
-
-    if (check) {
-      setRecipe(JSON.parse(check));
-    } else {
-      const api = await fetch(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
-      );
-      const data = await api.json();
-      setRecipe(data);
-      localStorage.setItem('recipe', JSON.stringify(data));
-    }
+    const api = await fetch(
+      `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
+    );
+    const data = await api.json();
+    setRecipe(data);
   };
 
   useEffect(() => {
