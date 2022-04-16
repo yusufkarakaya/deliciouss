@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function Popular() {
   const [popular, setPopular] = useState([]);
@@ -40,11 +42,14 @@ function Popular() {
         {popular.map((item) => {
           return (
             <SplideSlide key={item.id}>
-              <Card key={item.id}>
-                <img src={item.image} alt={item.title} />
-                <p>{item.title}</p>
-                <Gradient />
-              </Card>
+              <Link to={'/recipe/' + item.id}>
+                <Card key={item.id}>
+                  <img src={item.image} alt={item.title} />
+                  <p>{item.title}</p>
+
+                  <Gradient />
+                </Card>
+              </Link>
             </SplideSlide>
           );
         })}
@@ -65,6 +70,7 @@ const Card = styled.div`
   border-radius: 2rem;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 
   img {
     border-radius: 2rem;

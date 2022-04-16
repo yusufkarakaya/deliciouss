@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 function Searched() {
   const [searched, setSearched] = useState([]);
@@ -23,10 +24,12 @@ function Searched() {
     <Grid>
       {searched.map((item) => {
         return (
-          <div>
-            <img src={item.image} alt={item.title} />
-            <p>{item.title}</p>
-          </div>
+          <Link to={'/recipe/' + item.id}>
+            <div>
+              <img src={item.image} alt={item.title} />
+              <p>{item.title}</p>
+            </div>
+          </Link>
         );
       })}
     </Grid>
@@ -38,6 +41,10 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-gap: 3rem;
+  a {
+    text-decoration: none;
+    color: black;
+  }
 
   img {
     border-radius: 2rem;
