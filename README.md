@@ -4,9 +4,6 @@ Delicious
 
 I showed the food products on the front-end using api from spoonacular.
 
-## Project Status
-Done.
-
 ## Project Screen Shot(s)
 
 #### Example:   
